@@ -21,6 +21,7 @@ function App () {
   }
   // La fonction qui permet de supprimer une tâche  de liste de tâches
   const deleteTodo = index => {
+    console.log('index:', index)
     todoList.splice(index, 1); // On retire l'élément que l'on veut supprimer
     setTodoList([...todoList]); // Et on met à jour notre state (notre liste ici)
   }
@@ -42,7 +43,7 @@ function App () {
           <div key={idx}>
             <span>{e}</span>
             {/* Grâce à la méthode onClick on appelle la fonction deleteTodo */}
-            <button onClick={deleteTodo}>x</button>
+            <button onClick={() => deleteTodo(idx)}>x</button>
           </div>
         ))}
     </div>
