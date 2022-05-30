@@ -1,0 +1,24 @@
+<style>
+  .app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+</style>
+<div class="app">
+  <h1>{{ title }}</h1>
+  <div>
+  <!-- Mon input avec ma variable de référence #todo_content qui m'aide à récuper que la valeur de mon text la valeur
+    ma méthode handleChange qui récupère chaque lettre   -->
+    <input type="text" #todo_content (change)="handleChange(todo_content.value)">
+    <!-- Mon button qui ajoute ma tâche à ma liste de tâche, faire attention à la valeur de mon #todo_content -->
+    <!-- Ensuite dans ma méthode click toujours je réinitialise la valeur de mon input avec todo_content.value = '' -->
+    <button (click)="addItem(todo_content.value); todo_content.value = ''">Ajouter une tâche</button>
+  </div>
+  <!-- Ici je fais un map sur ma liste de todos et affiche chaque éléménts avec un boutton pour le supprimer -->
+  <div class="list" *ngFor="let todo of listOfTodos; let index = index">
+    <span>{{todo}}</span>
+    <!--  J'ai mon boutton qui me permet de supprimer mon éléement en lui passant l'index en paramètre -->
+    <button (click)="deleteTodo(index)">x</button>
+  </div>
+</div>
